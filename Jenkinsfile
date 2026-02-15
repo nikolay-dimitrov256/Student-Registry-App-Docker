@@ -6,16 +6,18 @@ pipeline{
                 bat "npm install"
             }
         }
+        stage("Run tests and security checks") {
         failfast true
-        parallel {
-            stage("Run security tests"){
-                steps{
-                    bat "npm audit"
+            parallel {
+                stage("Run security tests"){
+                    steps{
+                        bat "npm audit"
+                    }
                 }
-            }
-            stage("Run tests"){
-                steps{
-                    bat "npm test"
+                stage("Run tests"){
+                    steps{
+                        bat "npm test"
+                    }
                 }
             }
         }
