@@ -1,5 +1,7 @@
 pipeline{
+    
     agent any
+
     stages{
         stage("Install dependencies"){
             steps{
@@ -7,7 +9,7 @@ pipeline{
             }
         }
         stage("Run tests and security checks") {
-        failfast true
+            failFast true
             parallel {
                 stage("Run security tests"){
                     steps{
